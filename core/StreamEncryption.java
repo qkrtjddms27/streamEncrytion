@@ -1,6 +1,6 @@
 package core;
 
-import core.CreateKeyStream.CreateKeyStream;
+import core.CreateKeyStream.CreateKeyStreamImpl;
 import core.EDcrption.EDcrptionImpl;
 import core.FileInOutput.FileInOutputImpl;
 
@@ -13,15 +13,19 @@ public class StreamEncryption { // EDcrption
         List<Object> KeyStream = new ArrayList<Object>();
         List<Object> inputData = new ArrayList<Object>();
         File out = new File(args[5]);
+        ArrayList<Integer> key = new ArrayList<>();
+        long afterTime,beforeTime = System.nanoTime();
+        long kekTime;
 
         if (args[1].length() > 80) //key 값 처리
         {
             System.out.println("키 길이가 초과입니다. 최대 80글자");
         }
-        int[] key = new int[80];
+
+
 
         for (int count = 0 ; count <args[1].length(); count++) {
-            key[count] = args[1].charAt(count);
+            key.add( (int)args[1].charAt(count) );
         }
 
         if (out.exists()) {
@@ -40,15 +44,15 @@ public class StreamEncryption { // EDcrption
         FileInOutputImpl FIO = new FileInOutputImpl(args[3], args[5]);
         long fileSize = FIO.inputFileSize();
 
-        CreateKeyStream Stream = new CreateKeyStream(fileSize);
+        CreateKeyStreamImpl Stream = new CreateKeyStreamImpl(fileSize);
 
-        long befor_time = System.nanoTime();
+
         KeyStream = Stream.CreateStream(key);
-        long after_time = System.nanoTime();
-        long key_time = after_time - befor_time;
+
+        kekTime = afterTime - beforeTime;
         inputData = FIO.readFile();
 
-        befor_time = System.nanoTime();
+
         for(int count = 0 ; count < inputData.size() ; count++)
         {
             FIO.writeFile(ED.EDcrption((Byte)inputData.get(count), (Byte)KeyStream.get(count)));
