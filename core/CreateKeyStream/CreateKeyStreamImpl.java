@@ -6,22 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreateKeyStreamImpl implements CreateKeyStream{
-    ArrayList<Integer> KeyStream = new ArrayList<>();
-    long filesize;
+    ArrayList<Byte> KeyStream = new ArrayList<>();
+    long fileSize;
 
     public CreateKeyStreamImpl(long fileSize) {
-        this.filesize = fileSize;
+        this.fileSize = fileSize;
     }
 
-    public List<Integer> CreateStream(int[] key) {
-        MersenneTwister r;
-        r = new MersenneTwister(key);
+    @Override
+    public ArrayList<Byte> CreateStream(int[] key) {
+        MersenneTwister mt = new MersenneTwister(key);
 
-        for (int count = 0; count < this.filesize ; count++) {
-            Byte l = r.nextByte();
-            KeyStream.add(l);
+        for (int count = 0; count < this.fileSize ; count++) {
+            Byte b = mt.nextByte();
+            KeyStream.add(b);
         }
 
         return KeyStream;
     }
+
 }

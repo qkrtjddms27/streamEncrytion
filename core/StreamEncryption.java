@@ -10,19 +10,18 @@ import java.io.File;
 
 public class StreamEncryption { // EDcrption
     public void main(String[] args) {
-        List<Object> KeyStream = new ArrayList<Object>();
-        List<Object> inputData = new ArrayList<Object>();
+        List<Byte> KeyStream = new ArrayList<>();
+        List<Integer> inputData = new ArrayList<>();
+        int[] key;
         File out = new File(args[5]);
-        ArrayList<Integer> key = new ArrayList<>();
-        long afterTime,beforeTime = System.nanoTime();
-        long kekTime;
+
+        long afterTime, beforeTime = System.nanoTime();
+        long keyTime;
 
         if (args[1].length() > 80) //key 값 처리
         {
             System.out.println("키 길이가 초과입니다. 최대 80글자");
         }
-
-
 
         for (int count = 0 ; count <args[1].length(); count++) {
             key.add( (int)args[1].charAt(count) );
@@ -33,7 +32,7 @@ public class StreamEncryption { // EDcrption
             System.exit(0);
         }
 
-        if (args[3] == args[5]) {
+        if ( args[3].equals(args[5]) ) {
             System.out.println("입력파일과 출력파일의 이름이 같습니다.");
             System.exit(0);
         }
@@ -49,7 +48,7 @@ public class StreamEncryption { // EDcrption
 
         KeyStream = Stream.CreateStream(key);
 
-        kekTime = afterTime - beforeTime;
+        keyTime = afterTime - beforeTime;
         inputData = FIO.readFile();
 
 
