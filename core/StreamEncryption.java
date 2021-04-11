@@ -12,7 +12,7 @@ public class StreamEncryption { // EDcrption
     public void main(String[] args) {
         List<Byte> KeyStream = new ArrayList<>();
         List<Integer> inputData = new ArrayList<>();
-        int[] key;
+        int[] key = new int[args[1].length()];
         File out = new File(args[5]);
 
         long afterTime, beforeTime = System.nanoTime();
@@ -23,8 +23,8 @@ public class StreamEncryption { // EDcrption
             System.out.println("키 길이가 초과입니다. 최대 80글자");
         }
 
-        for (int count = 0 ; count <args[1].length(); count++) {
-            key.add( (int)args[1].charAt(count) );
+        for (int count = 0 ; count <args[1].length(); count++) { // 키 생성
+            key[count] = args[1].charAt(count);
         }
 
         if (out.exists()) {
@@ -54,7 +54,7 @@ public class StreamEncryption { // EDcrption
 
         for(int count = 0 ; count < inputData.size() ; count++)
         {
-            FIO.writeFile(ED.EDcrption((Byte)inputData.get(count), (Byte)KeyStream.get(count)));
+            FIO.writeFile(ED.EDCrption((Byte)inputData.get(count), (Byte)KeyStream.get(count)));
         }
         after_time = System.nanoTime();
 
