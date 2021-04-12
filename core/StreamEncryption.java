@@ -1,15 +1,17 @@
 package core;
 
 import core.CreateKeyStream.CreateKeyStreamImpl;
-import core.EDcrption.EDcrptionImpl;
+import core.EDcrption.EDcrption;
 import core.FileInOutput.FileInOutputImpl;
-
+import core.AppConfig;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 
 public class StreamEncryption { // EDcrption
     public void main(String[] args) {
+        AppConfig ap = new AppConfig();
+        EDcrption ed = ap.eDcrption();
         List<Byte> KeyStream = new ArrayList<>();
         List<Integer> inputData = new ArrayList<>();
         int[] key = new int[args[1].length()];
@@ -38,7 +40,7 @@ public class StreamEncryption { // EDcrption
         }
 
 
-        EDcrptionImpl ED = new EDcrptionImpl();
+
 
         FileInOutputImpl FIO = new FileInOutputImpl(args[3], args[5]);
         long fileSize = FIO.inputFileSize();

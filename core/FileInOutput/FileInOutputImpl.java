@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileInOutputImpl {
+public class FileInOutputImpl implements FileInOutput{
 
     Byte len;
     FileOutputStream fos;
@@ -16,7 +16,7 @@ public class FileInOutputImpl {
 
 
 
-    public FileInOutputImpl(String inputPath, String outputPath) {
+    public FileInOutputImpl(Byte inputPath, Byte outputPath) {
         try {
             this.fos = new FileOutputStream(outputPath);
             this.fis = new FileInputStream(inputPath);

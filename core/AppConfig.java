@@ -9,15 +9,15 @@ import core.FileInOutput.FileInOutputImpl;
 
 public class AppConfig {
 
-    public CreateKeyStream createKeyStream () {
-        return new CreateKeyStreamImpl();
+    public CreateKeyStream createKeyStream (long fileSize) {
+        return new CreateKeyStreamImpl(fileSize);
     }
 
     public EDcrption eDcrption() {
         return new EDcrptionImpl();
     }
 
-    public FileInOutput fileInOutput() {
-        return new FileInOutputImpl();
+    public FileInOutput fileInOutput(Byte inputFileData, Byte keyStream) {
+        return new FileInOutputImpl(inputFileData, keyStream);
     }
 }
