@@ -1,5 +1,5 @@
-package core.EDcrption;
+package core.EDCrption;
 
-public interface EDcrption {
+public interface EDCrption {
     byte EDCrption(Byte inputFileData, Byte keyStream);
 }

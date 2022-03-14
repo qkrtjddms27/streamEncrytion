@@ -2,8 +2,8 @@ package core;
 
 import core.CreateKeyStream.CreateKeyStream;
 import core.CreateKeyStream.CreateKeyStreamImpl;
-import core.EDcrption.EDcrption;
-import core.EDcrption.EDcrptionImpl;
+import core.EDCrption.EDCrption;
+import core.EDCrption.EDCrptionImpl;
 import core.FileInOutput.FileInOutput;
 import core.FileInOutput.FileInOutputImpl;
 
@@ -13,11 +13,11 @@ public class AppConfig {
         return new CreateKeyStreamImpl(fileSize);
     }
 
-    public EDcrption eDcrption() {
-        return new EDcrptionImpl();
+    public EDCrption edCrption() {
+        return new EDCrptionImpl();
     }
 
-    public FileInOutput fileInOutput(Byte inputFileData, Byte keyStream) {
+    public FileInOutput fileInOutput(String inputFileData, String keyStream) {
         return new FileInOutputImpl(inputFileData, keyStream);
     }
 }

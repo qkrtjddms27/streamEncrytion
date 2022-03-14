@@ -4,19 +4,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileInOutputImpl implements FileInOutput{
+public class FileInOutputImpl implements FileInOutput {
 
-    Byte len;
     FileOutputStream fos;
     FileInputStream fis;
     DataOutputStream dos;
     File fi;
     File fo;
-    List<Object> inputData = new ArrayList<Object>();
+    List<Integer> inputData = new ArrayList<>();
 
-
-
-    public FileInOutputImpl(Byte inputPath, Byte outputPath) {
+    public FileInOutputImpl(String inputPath, String outputPath) {
         try {
             this.fos = new FileOutputStream(outputPath);
             this.fis = new FileInputStream(inputPath);
@@ -32,24 +29,21 @@ public class FileInOutputImpl implements FileInOutput{
         return fi.length();
     }
 
-    public List<Object> readFile(){
+    public List<Integer> readFile(){
         try {
-
-            for(int count=0 ; count < fi.length() ; count++)
-            {
-                inputData.add((byte)fis.read());
+            for(int count=0 ; count < fi.length() ; count++) {
+                inputData.add((fis.read()));
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
         return inputData;
     }
 
-    public void writeFile(Byte cypertext) { // 내용 추가 파일 생성 x
+    public void writeFile(Byte ciphertext) { // 내용 추가 파일 생성 x
         try {
-            dos.writeByte(cypertext);
-        } catch(IOException e) {
+            dos.writeByte(ciphertext);
+        } catch (IOException e) {
             System.out.println(e);
         }
     }

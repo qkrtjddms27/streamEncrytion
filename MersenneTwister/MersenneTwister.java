@@ -1,12 +1,6 @@
 package core.MersenneTwister;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-
-import core.Persistable;
+import java.io.*;
 
 /**
  * <h3>MersenneTwister and MersenneTwisterFast</h3>

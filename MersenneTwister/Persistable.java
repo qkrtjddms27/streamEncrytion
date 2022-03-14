@@ -1,4 +1,4 @@
-package core;
+package core.MersenneTwister;
 
 import java.io.Serializable;
 

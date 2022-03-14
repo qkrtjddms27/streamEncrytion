@@ -3,7 +3,6 @@ package core.CreateKeyStream;
 import core.MersenneTwister.MersenneTwister;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CreateKeyStreamImpl implements CreateKeyStream{
     ArrayList<Byte> KeyStream = new ArrayList<>();

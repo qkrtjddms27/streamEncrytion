@@ -1,6 +1,6 @@
-package core.EDcrption;
+package core.EDCrption;
 
-public class EDcrptionImpl implements EDcrption{
+public class EDCrptionImpl implements EDCrption {
 
     public byte EDCrption(Byte inputFileData, Byte keyStream) {
         return (byte) (inputFileData ^ keyStream);
